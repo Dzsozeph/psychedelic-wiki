@@ -1,0 +1,493 @@
+@charset "utf-8";
+/* CSS Document */
+.birthstone-regular {
+  font-family: "Birthstone", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: rgba(88,80,81,1.00);
+  overflow-x: hidden;
+  box-sizing: border-box;
+    
+}
+.video-background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh; /* teljes képernyő */
+  overflow: hidden;
+  opacity: 0.9;
+  
+
+}
+
+.video-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.video-background .content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  top: 40%;
+}
+
+
+.logo-container{
+    position: absolute;
+    top: -30px;
+    width: 20vw;
+    height: 25vh;
+    background-image: url("logo1.PNG");
+    background-size: cover;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.25); /* áttetsző fehér */
+  backdrop-filter: blur(10px); /* homályosítja a mögöttes tartalmat */
+  -webkit-backdrop-filter: blur(10px); /* Safari kompatibilitás */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* vékony „üveg szegély” */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* finom árnyék */
+  padding: 20px 40px;
+  height: 20vh;
+  display: flex;           /* flex layout */
+  align-items: center;     /* vertikálisan középre */
+  justify-content: space-between; /* ha vannak jobb és bal oldali menük */
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  position: fixed;
+  margin-top: 10vh;
+  
+  
+}
+
+.menu-item {
+  position: relative;
+  color: black;
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: background 0.3s;
+  border-radius: 5px;
+  text-shadow: 0 0 5px white;
+  text-align: center;
+  
+}
+
+.menu-right{
+    right: 4vw;
+    gap: 80px;
+}
+
+.menu-right .submenu{
+    top: 12vh;
+}
+.menu-item:hover {
+  
+  color: white;
+}
+
+.submenu{
+    position: absolute;
+    margin-top: 1rem;
+    left: 0;
+    
+}
+.menu-item:hover > .submenu,
+.menu-item > .submenu:hover {
+    display: block;
+    padding: 15px;
+}
+.submenu, .subsubmenu {
+  list-style: none;
+  position: absolute;
+  padding: 0px 30px;
+  display: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2); /* áttetsző fehér */
+  backdrop-filter: blur(10px); /* homályosítja a mögöttes tartalmat */
+  -webkit-backdrop-filter: blur(10px); /* Safari kompatibilitás */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* vékony „üveg szegély” */
+  box-shadow: 0 0 10px purple;
+}
+
+
+
+
+
+.submenu-item {
+  position: relative;
+  padding: 10px 20px;
+  color: #fff;
+  white-space: nowrap;
+  transition: background 0.3s;
+
+}
+
+.submenu-item:hover {
+  border-bottom: 0.1rem solid;
+}
+
+.submenu-item:hover::before {
+  content: '';
+  position: absolute;
+  top: 10px; /* állítsd a függőleges pozíciót */
+  right: -20px; /* a bal oldalról kezdjük, hogy a nyíl kívül legyen */
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid rgba(255, 255, 255, 0.8); /* jobbra mutató nyíl */
+  z-index: 2;
+  filter: drop-shadow(2px 0 5px rgba(0,0,0,0.4));
+}
+/* Grid subsubmenu */
+.subsubmenu {
+  top: 1vh;
+  height: 150vh;
+  margin-left: 11vw;
+  position: fixed;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
+  padding-top: 30vh;
+  min-width: 75vw;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(255, 100, 200, 0.5);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  visibility: hidden;
+  align-content: start;
+  
+}
+
+.submenu-item:hover::before {
+  content: '';
+  position: absolute;
+  top: 10px; /* állítsd a függőleges pozíciót */
+  right: -20px; /* a bal oldalról kezdjük, hogy a nyíl kívül legyen */
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid rgba(255, 255, 255, 0.8); /* jobbra mutató nyíl */
+  z-index: 2;
+  filter: drop-shadow(2px 0 5px rgba(0,0,0,0.4));
+}
+
+.submenu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 20px; /* igazítsd a Substances pozíciójához */
+  border-left: 10px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 10px solid rgba(255, 255, 255, 0.8); /* üveg hatás */
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.4));
+}
+
+.submenu-item:hover > .subsubmenu {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.subsubmenu li {
+ 
+  position: relative;
+  background: rgba(255, 255, 255, 0.050); /* áttetsző fehér */
+  backdrop-filter: blur(10px); /* homályosítja a mögöttes tartalmat */
+  -webkit-backdrop-filter: blur(10px); /* Safari kompatibilitás */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 140px;
+  width: auto;
+  transition: background 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 0 20px purple;
+
+  
+  
+}
+
+.subsubmenu li img.molecule-img {
+  width: 80px;
+  height: 120px;
+  object-fit: contain;
+}
+
+
+.textbox {
+	min-width:80vw;
+	position: fixed;
+	bottom: 0vh;
+     background: rgba(255, 255, 255, 0.1); /* áttetsző fehér */
+  backdrop-filter: blur(10px); /* homályosítja a mögöttes tartalmat */
+  -webkit-backdrop-filter: blur(10px); /* Safari kompatibilitás */
+    color: white; /* Szöveg színe */
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    clip-path: polygon(0% 0%, 10% 0%, 0% 100%, 100% 100%, 90% 0%, 100% 0%); /* Két szél lefelé vágva 40 fokban */
+	font-weight: 700;
+	text-shadow: 4px 4px 5px black;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.textbox::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0) 30%); /* Átlátszó gradient a levágott széleken */
+    clip-path: polygon(0% 0%, 10% 0%, 0% 100%, 100% 100%, 90% 0%, 100% 0%); /* Levágott szélek */
+    z-index: -1; /* Háttérbe helyezés */
+
+}
+#text {
+  transition: opacity 1s ease;
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+  transition: opacity 1s ease, transform 1s ease; /* opacity + eltolás */
+}
+.fade-out {
+  opacity: 0;
+  transform: translateX(100px); /* jobbra tolás, tetszőleges px vagy % */
+}
+
+
+#subheader-1 {
+    position: absolute;
+    background-image: url('lsdbackground.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 10vh;
+    width: 100%; /* vagy bármennyi */
+
+}
+
+#subheader-2{
+    position: absolute;
+    background-image: url('shulgin.webp');
+    background-size: 90%;
+    height: 50vh;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding: 10vh;
+    width: 100%; /* vagy bármennyi */
+
+}
+#subheader-3{
+    position: absolute;
+    background-image: url('sacred.png');
+    background-size: cover;
+    height: 40vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%; /* vagy bármennyi */
+    opacity: 1;
+
+}
+
+#subheader-4{
+    position: absolute;
+    background-image: url('sasha.jpg');
+    background-size: cover;
+    height: 40vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%; /* vagy bármennyi */
+    opacity: 1;
+
+}
+
+#subheader-1 p, 
+#subheader-2 p,
+#subheader-3 p,
+#subheader-4 p{
+    background: rgba(0,0,0,0.40);
+    font-size: 1rem;
+    word-wrap: break-word;
+    /* height-ot inkább ne absolute-ra, hanem auto-ra állítsd, ha szöveg hosszú */
+    height: auto;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20vh;
+    text-shadow: 0 0 20px black;
+}
+
+
+
+.menu-item:hover #icon-1,
+.menu-item:hover #icon-2,
+.menu-item:hover #icon-3,
+.menu-item:hover #icon-4,
+.menu-item:hover #icon-5,
+.menu-item:hover #icon-6
+{
+    box-shadow: 0 0 40px black;
+    filter: brightness(1.4);
+}
+#icon-1{
+    
+    width: 50px;
+    height: 50px;
+    background-image: url('sub.png');
+    background-size: cover;
+    box-shadow: 0 0 40px white;
+    border-radius: 50%;
+    background-color: rgba(252,252,252,0.30);
+}
+#icon-2{
+    
+    width: 50px;
+    height: 50px;
+    background-image: url('mind.png');
+    background-size: cover;
+    box-shadow: 0 0 40px white;
+    border-radius: 50%;
+    background-color: rgba(252,252,252,0.30);
+}
+#icon-3{
+  
+    width: 50px;
+    height: 50px;
+    background-image: url('integration.png');
+    background-size: cover;
+    box-shadow: 0 0 40px white;
+    border-radius: 50%;
+    background-color: rgba(252,252,252,0.30);
+    
+}
+
+#icon-4{
+    
+    width: 50px;
+    height: 50px;
+    background-image: url('book.png');
+    background-size: cover;
+    box-shadow: 0 0 40px white;
+    border-radius: 50%;
+    background-color: rgba(252,252,252,0.30);
+    
+}
+#icon-5{
+    
+
+    width:50px;
+    height: 50px;
+    background-image: url('art.png');
+    background-size: cover;
+    box-shadow: 0 0 40px white;
+    border-radius: 50%;
+    background-color: rgba(252,252,252,0.30);
+    
+}
+#icon-6{
+    
+    width: 50px;
+    height: 50px;
+    background-image: url('help.png');
+    background-size: cover;
+    box-shadow: 0 0 40px white;
+    border-radius: 50%;
+    background-color: rgba(252,252,252,0.30);
+    
+}
+.grid-plantmedicine {
+  display: grid;
+  grid-template-columns: repeat(4, 30vh); /* 🔥 pontosan 5 kártya */
+  justify-content: center;                 /* 🔥 vízszintesen középre */
+  align-items: stretch;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 3rem;
+  margin-top: 10vh;
+  margin-left: 35vw;
+  
+}
+
+
+.pm-card {
+  scroll-snap-align: start;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.pm-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,.6);
+}
+
+.pm-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.pm-card h3 {
+  margin: 1rem 1rem .3rem;
+  font-size: 1.1rem;
+}
+
+.pm-card p {
+  margin: 0 1rem 1rem;
+  font-size: .9rem;
+  opacity: .8;
+}
+
+h2{
+   font-family: "Birthstone", cursive;
+    font-size: 4rem;
+    left: 35%;
+    top: 0;
+    position: relative;
+    text-shadow: 0 0 20px black;
+}
+
+.menu-content {
+  flex-direction: column;  /* 🔥 ikon fölül, szöveg alul */
+  align-items: center;     /* 🔥 vízszintesen középre */
+  justify-content: center;
+  gap: 10px;
+  display: flex;           /* flex layout */
+    
+}
+
